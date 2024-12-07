@@ -1,58 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
-
+	
 <!doctype html>
 <html class="no-js" lang="en">
 
-    <head>
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
-        
-        <!-- title of site -->
-        <title>Browny</title>
+{% block content %}
+	
 
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="{% static 'logo/favicon.png' %}"/>
-       
-        <!--font-awesome.min.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-
-		<!--flat icon css-->
-		<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
-
-		<!--animate.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-
-        <!--owl.carousel.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-		<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-		
-        <!--bootstrap.min.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="{% static 'css/bootsnav.css' %}" >	
-        
-        <!--style.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        
-        <!--responsive.css' %}-->
-        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-        
-        <!-- HTML5 shim and Respond.js' %} for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js' %} doesn't work if you view the page via file:// -->
-		
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js' %}"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script>
-        <![endif]-->
-
-    </head>
 	
 	<body>
 		<!--[if lte IE 9]>
@@ -122,10 +77,7 @@
 						<div class="col-sm-6">
 							<div class="single-about-txt">
 								<h3>
-									Hi there! I'm Aly, a programmer with a passion for learning new things and diving deep into the world of technology.
-									I specialize in building projects with Django, Python, and HTML, and I’m always on the lookout for new challenges.
-
-									When I'm not coding, you'll probably find me enjoying anime 🎥 or exploring the endless possibilities of technology.
+									Hi there! I'm Aly, a high school student and programmer with a passion for learning new things and diving deep into the world of technology. I specialize in building projects with Django, Python, and HTML, and I’m always on the lookout for new challenges. When I'm not coding, you'll probably find me enjoying anime 🎥 or exploring the endless possibilities of technology. Oh, and I’m fluent in both English and Persian! 🌍
 								</h3>
 								<p>
 									Here are some of the tools and languages I work with:
@@ -144,13 +96,13 @@
 									<div class="col-sm-4">
 										<div class="single-about-add-info">
 											<h3>phone</h3>
-											<p><a href="">09015487434</a></p>
+											<p><a href="">{{phone_number}}</a></p>
 										</div>
 									</div>
 									<div class="col-sm-4" style="padding-right: 0px;">
 										<div class="single-about-add-info">
 											<h3>email</h3>
-											<p style="margin-right: 18px ;"><a href="" style="margin-right: 13px;">alyasyly8668@gmail.com</a></p>
+											<p style="margin-right: 18px ;"><a href="" style="margin-right: 13px;">{{email}}</a></p>
 										</div>
 									</div>
 									<div class="col-sm-4">
@@ -327,11 +279,11 @@
 									<div class="contact-add-info">
 										<div class="single-contact-add-info">
 											<h3>phone</h3>
-											<p>09015487434</p>
+											<p>{{phone_number}}</p>
 										</div>
 										<div class="single-contact-add-info">
 											<h3>email</h3>
-											<p>alyasyly8668@gmail.com</p>
+											<p>{{email}}</p>
 										</div>
 										<div class="single-contact-add-info">
 											<h3>website</h3>
@@ -353,62 +305,7 @@
 		</section><!--/.contact-->
 		<!--contact end -->
 
-		<!--footer-copyright start-->
-		<footer id="footer-copyright" class="footer-copyright">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
-					<p>
-						&copy; copyright yourname. design and developed by <a href="https://www.themesine.com/">themesine</a>
-					</p><!--/p-->
-				</div><!--/.text-center-->
-			</div><!--/.container-->
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" ></i>
-				</div>
-				
-			</div><!--/.scroll-Top-->
-			
-        </footer><!--/.footer-copyright-->
-		<!--footer-copyright end-->
-		
-		<!-- Include all js compiled plugins (below), or include individual files as needed -->
-
-		<script src="{% static 'js/jquery.js' %}"></script>
-        
-        <!--modernizr.min.js' %}-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' %}"></script>
-		
-		<!--bootstrap.min.js' %}-->
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-		
-		<!-- bootsnav js -->
-		<script src="{% static 'js/bootsnav.js' %}"></script>
-		
-		<!-- jquery.sticky.js' %} -->
-		<script src="{% static 'js/jquery.sticky.js' %}"></script>
-		
-		<!-- for progress bar start-->
-
-		<!-- progressbar js -->
-		<script src="{% static 'js/progressbar.js' %}"></script>
-
-		<!-- appear js -->
-		<script src="{% static 'js/jquery.appear.js' %}"></script>
-
-		<!-- for progress bar end -->
-
-		<!--owl.carousel.js' %}-->
-        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		
-        
-        <!--Custom JS-->
-        <script src="{% static 'js/custom.js' %}"></script>
         
     </body>
-	
+{% endblock content %}
 </html>
