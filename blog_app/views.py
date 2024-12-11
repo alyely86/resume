@@ -6,6 +6,9 @@ from django.shortcuts import render
 def post_blog(request):
     return render(request,'blog/index.html')
 
+def single_post(request):
+    return render(request,'blog/post.html')
+
 # for resume
 def resume_view(request):
     phone_number = '09015487434'
