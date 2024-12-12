@@ -1,13 +1,22 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,get_object_or_404
+from .models import Post
 # Create your views here.
 
 
 def post_blog(request):
-    return render(request,'blog/index.html')
+    posts = Post.objects.filter(status=Post.Status.PUBLISHED)
+    return render(request,'blog/index.html',
+                  {'posts':posts}
+                  )
 
-def single_post(request):
-    return render(request,'blog/post.html')
+def single_post(request,id=id):
+    post = get_object_or_404(Post,id=id,status=Post.Status.PUBLISHED)
+    return render(request,'blog/post.html',
+                  {'post':post}
+                  )
+
+def contact_view(request):
+    return render(request,'blog/contact.html')
 
 # for resume
 def resume_view(request):
