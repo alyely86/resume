@@ -37,14 +37,24 @@
             </div>
             <div class="row tm-row">
                 <div class="col-lg-8 tm-post-col">
-                    <div class="tm-post-full">                    
+                    <div class="tm-post-full">
+                        
+                        
+                            
+                                                                     
                         <div class="mb-4">
                             <h2 class="pt-2 tm-color-primary tm-post-title">{{ post.title }}</h2>
                             <p class="tm-mb-40">{{ post.publish }}</p>
                             <p>
-                                {{post.body}}
+                                {{post.body}}{{tag.name}}
                             </p>
-                            <span class="d-block text-right tm-color-primary">Creative . Design . Business</span>
+                            {% for tag in tags %}
+                            <span class="d-block text-right tm-color-primary">
+                                <a href="{% url 'post_blog_tag' tag.slug %}" class="d-block text-right tm-color-primary">{{tag.name}}</a>
+                            
+                            {% if not forloop.last %}, {% endif %}
+                            </span>
+                            {% endfor %}
                         </div>
                         
                         <!-- Comments -->

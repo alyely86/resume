@@ -7,6 +7,11 @@
 <body>
     
     {% block content %}
+    
+    
+        
+    
+        
     <div class="container-fluid">
         <main class="tm-main">
             <!-- Search form -->
@@ -20,8 +25,9 @@
                     </form>
                 </div>                
             </div>
-            
-            
+            {% if tag %}
+                <h2>Posts tagged with "{{ tag.name }}"</h2>
+            {% endif %}
             <div class="container">
                 <div class="row">
                     {% for post in posts %}
@@ -40,8 +46,9 @@
                                 <p class="tm-pt-30">
                                     {{ post.body }}
                                 </p>
+
                                 <div class="d-flex justify-content-between tm-pt-45">
-                                    <span class="tm-color-primary">Travel . Events</span>
+                                    <span class="tm-color-primary">{{post.tags.all|join:', '}}</span>
                                     <span class="tm-color-primary">June 24, 2020</span>
                                 </div>
                                 <hr>
@@ -87,6 +94,7 @@
                     </nav>
                 </div>                
             </div>
+        
         {% endblock content %}
         </main>
     </div>

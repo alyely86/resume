@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Post(models.Model):
@@ -22,6 +23,8 @@ class Post(models.Model):
                           default=Status.DRAFT    
             )
     
+    tags = TaggableManager()
+
     class Meta:
         ordering = ['-publish']
         indexes = [
@@ -53,3 +56,4 @@ class Comment(models.Model):
         
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
+    
