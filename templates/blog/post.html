@@ -44,7 +44,7 @@
                                                                      
                         <div class="mb-4">
                             <h2 class="pt-2 tm-color-primary tm-post-title">{{ post.title }}</h2>
-                            <p class="tm-mb-40">{{ post.publish }}</p>
+                            <p class="tm-mb-40">{{ post.publish|date:'d M Y' }}</p>
                             <p>
                                 {{post.body}}{{tag.name}}
                             </p>
