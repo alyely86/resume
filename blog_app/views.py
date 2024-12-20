@@ -18,8 +18,9 @@ def post_blog(request,tag_slug=None):
 def single_post(request,id=id):
     post = get_object_or_404(Post,id=id,status=Post.Status.PUBLISHED)
     tags = post.tags.all()
+    all_tags = Tag.objects.all()
     return render(request,'blog/post.html',
-                  {'post':post,'tags':tags}
+                  {'post':post,'tags':tags,'all_tags':all_tags}
                   )
 
 def contact_view(request):
