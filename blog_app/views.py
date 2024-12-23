@@ -7,6 +7,7 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 def post_blog(request,tag_slug=None):
     posts = Post.objects.filter(status=Post.Status.PUBLISHED)
+    
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
@@ -14,13 +15,18 @@ def post_blog(request,tag_slug=None):
 
 
     # Pagination with 6 posts per page
-    paginator = Paginator(posts,2)
+    paginator = Paginator(posts,1)
     try:
         page_number = request.GET.get('page',1)
         posts = paginator.page(page_number)
+
     except EmptyPage or PageNotAnInteger:
+
         posts = paginator.page(1)
- 
+  
+    if page_number == 1 or page_number == "1":
+        for index, post in enumerate(posts):
+            post.is_first = (index == 0)
 
     return render(request,'blog/index.html',
                   {'posts':posts,'tag':tag}
