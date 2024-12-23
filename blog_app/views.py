@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Post
 from taggit.models import Tag
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 # Create your views here.
 
 
@@ -10,6 +11,16 @@ def post_blog(request,tag_slug=None):
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
+
+
+    # Pagination with 6 posts per page
+    paginator = Paginator(posts,2)
+    try:
+        page_number = request.GET.get('page',1)
+        posts = paginator.page(page_number)
+    except EmptyPage or PageNotAnInteger:
+        posts = paginator.page(1)
+ 
 
     return render(request,'blog/index.html',
                   {'posts':posts,'tag':tag}

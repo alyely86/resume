@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<div class="row tm-row tm-mt-100 tm-mb-75">
+    <div class="tm-prev-next-wrapper">
+    
+    {% if page.has_previous %}      
+        <a href="?page={{ page.previous_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20">Prev</a>
+    {% endif %}
+    {% if page.has_next %}    
+        <a href="?page={{ page.next_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>    
+    {% endif %}
+    </div>
+    <div class="tm-paging-wrapper">
+        <span class="d-inline-block mr-3">Page {{ page.number }} of {{ page.paginator.num_pages }}.</span>
+            
+            {% for i in page.paginator.page_range %}
+                              
+
+                <a href="?page={{i}}" class="mb-2 tm-btn tm-paging-link" style="margin-right: 1%;">{{i}}</a>
+
+
+            {% endfor %}
+ 
+    </div>                
+</div>
