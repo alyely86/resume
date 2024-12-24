@@ -15,7 +15,7 @@ def post_blog(request,tag_slug=None):
 
 
     # Pagination with 6 posts per page
-    paginator = Paginator(posts,1)
+    paginator = Paginator(posts,4)
     try:
         page_number = request.GET.get('page',1)
         posts = paginator.page(page_number)
@@ -36,9 +36,14 @@ def single_post(request,id=id):
     post = get_object_or_404(Post,id=id,status=Post.Status.PUBLISHED)
     tags = post.tags.all()
     all_tags = Tag.objects.all()
-    return render(request,'blog/post.html',
-                  {'post':post,'tags':tags,'all_tags':all_tags}
-                  )
+    if not request.COOKIES.get(f'post_{id}_viewed'):
+        post.views +=1
+        post.save()
+    response = render(request, 'blog/post.html', {'post': post, 'tags': tags, 'all_tags': all_tags})
+
+    response.set_cookie(f'post_{id}_viewed', 'true', max_age=1200)
+
+    return response
 
 def contact_view(request):
     return render(request,'blog/contact.html')
