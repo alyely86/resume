@@ -54,3 +54,11 @@ def resume_view(request):
     email = 'alyasyly8668@gmail.com'
     return render(request,'resume/index.html',{'email':email,'phone_number':phone_number})
 
+
+def blog_search(request):
+    posts = Post.objects.filter(status=Post.Status.PUBLISHED)
+    if request.method == "GET":
+        if query:= request.GET.get('query'):      
+            posts = Post.objects.filter(title__contains=query)
+
+    return render(request,'blog/index.html',{'posts':posts})
