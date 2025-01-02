@@ -35,12 +35,9 @@
                     <img src="{{post.image.url}}" alt="" width="105%" height="80%" controls class="tm-mb-40">
                 </div>
             </div>
-            <div class="row tm-row">
+            <div class="row tm-row" style="width: 900px;">
                 <div class="col-lg-8 tm-post-col">
-                    <div class="tm-post-full">
-                        
-                        
-                            
+                    <div class="tm-post-full">             
                                                                      
                         <div class="mb-4">
                             <h2 class="pt-2 tm-color-primary tm-post-title">{{ post.title }}</h2>
@@ -58,7 +55,7 @@
                         </div>
                         
                         <!-- Comments -->
-                        <div>
+                        {% comment %} <div>
                             <h2 class="tm-color-primary tm-post-title">Comments</h2>
                             <hr class="tm-hr-primary tm-mb-45">
                             <div class="tm-comment tm-mb-45">
@@ -109,8 +106,30 @@
                                     <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
                                 </div>                                
                             </form>                          
-                        </div>
+                        </div> {% endcomment %}
                     </div>
+                    <div>
+                        <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://127-0-0-1-8000-yj9t2v4zra.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+
                 </div>
                 {% include 'blog/Include/blog-category.html' %}
             </div>
