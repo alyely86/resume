@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'blog_app.apps.BlogAppConfig',
     'taggit',
-    'captcha'
+    'captcha',
+    'django_extensions',
 ]
 
-
+#sites
+SITE_ID= 1
 
 #Captch
 MULTI_CAPTCHA_ADMIN = {
