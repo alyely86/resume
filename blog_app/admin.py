@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Comment
+from .models import Post,Comment,Contact
 
 # Register your models here.
 
@@ -13,8 +13,9 @@ class AdminPost(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ['status', 'publish']
 
-@admin.register(Comment)
+@admin.register(Contact)
 class AdminComment(admin.ModelAdmin):
-    list_display = ['name','email','post']
-    list_filter = ['active', 'created', 'updated']
-    search_fields = ['name','email','body']
+    list_display = ['name','email','subject']
+    list_filter = ['name']
+    search_fields = ['name','email']
+

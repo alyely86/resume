@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404
 from .models import Post
 from taggit.models import Tag
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+from .forms import ContactForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -46,7 +48,17 @@ def single_post(request,id=id):
     return response
 
 def contact_view(request):
-    return render(request,'blog/contact.html')
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,"your ticket successfuly")
+        else:
+            messages.add_message(request,messages.ERROR,"your ticket didnt submited")
+
+    form = ContactForm()
+    return render(request,'blog/contact.html',{'form':form})
 
 # for resume
 def resume_view(request):
